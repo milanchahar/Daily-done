@@ -1,0 +1,506 @@
+:root {
+  --sidebar-bg: #22336c;
+  --sidebar-section-bg: #2d4379;
+  --sidebar-header: #fff;
+  --sidebar-item-bg: #f8f9fa;
+  --sidebar-item-text: #22336c;
+  --sidebar-item-hover-bg: #e3eafe;
+  --sidebar-item-hover-text: #22336c;
+  --quick-filter-bg: #f8f9fa;
+  --quick-filter-text: #22336c;
+  --quick-filter-hover-bg: #4f7cf7;
+  --quick-filter-hover-text: #fff;
+  --list-bg: #f8f9fa;
+  --list-text: #22336c;
+  --list-hover-bg: #e3eafe;
+  --list-hover-text: #22336c;
+}
+
+.night-mode {
+  --sidebar-bg: #1a2238;
+  --sidebar-section-bg: #232b47;
+  --sidebar-header: #fff;
+  --sidebar-item-bg: #232b47;
+  --sidebar-item-text: #fff;
+  --sidebar-item-hover-bg: #2d3657;
+  --sidebar-item-hover-text: #fff;
+  --quick-filter-bg: #232b47;
+  --quick-filter-text: #fff;
+  --quick-filter-hover-bg: #4f7cf7;
+  --quick-filter-hover-text: #fff;
+  --list-bg: #232b47;
+  --list-text: #fff;
+  --list-hover-bg: #2d3657;
+  --list-hover-text: #fff;
+}
+
+.sidebar {
+  width: 280px;
+  height: 100%;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-header);
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+/* Night Mode Styles */
+.sidebar.night-mode {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-header);
+  border-right: 1px solid #333;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.night-mode .sidebar-search {
+  background: var(--sidebar-section-bg);
+  border-bottom: 1px solid #333;
+}
+
+.sidebar.night-mode .sidebar-search input {
+  background: var(--sidebar-item-hover-bg);
+  border: 1px solid var(--sidebar-section-bg);
+  color: var(--sidebar-header);
+}
+
+.sidebar.night-mode .sidebar-search input:focus {
+  border-color: #FF6B6B;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
+}
+
+.sidebar.night-mode .sidebar-search input::placeholder {
+  color: #b6c6e3;
+}
+
+.sidebar.night-mode .sidebar-section {
+  background: var(--sidebar-section-bg);
+  border-bottom: 1px solid #333;
+}
+
+.sidebar.night-mode .sidebar-section h3 {
+  color: #888;
+}
+
+.sidebar.night-mode .priority-item {
+  background: #222;
+  color: #fff;
+}
+
+.sidebar.night-mode .priority-item:hover {
+  background: #2a2a2a;
+}
+
+.sidebar.night-mode .priority-item.active {
+  background: rgba(108, 92, 231, 0.2);
+  color: #6C5CE7;
+}
+
+.sidebar.night-mode .sidebar-filter {
+  background: #222;
+  color: #fff;
+}
+
+.sidebar.night-mode .sidebar-filter:hover {
+  background: #2a2a2a;
+}
+
+.sidebar.night-mode .sidebar-filter.active {
+  background: #FF6B6B;
+  color: #fff;
+}
+
+.sidebar.night-mode .sidebar-item {
+  background: #222;
+  color: #fff;
+}
+
+.sidebar.night-mode .sidebar-item:hover {
+  background: #2a2a2a;
+}
+
+.sidebar.night-mode .sidebar-item.active {
+  background: rgba(108, 92, 231, 0.2);
+  color: #6C5CE7;
+}
+
+.sidebar.night-mode .sidebar-bottom-nav {
+  background: #222;
+  border-top: 1px solid #333;
+}
+
+.sidebar.night-mode .sidebar-nav-btn {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.sidebar.night-mode .sidebar-nav-btn:hover {
+  background: #333;
+  color: #FF6B6B;
+}
+
+/* Regular Styles */
+.sidebar-search {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  background: var(--sidebar-section-bg);
+}
+
+.sidebar-search input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 0.95em;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar-search input:focus {
+  outline: none;
+  border-color: #FF6B6B;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Section 2: Priority Matrix */
+.priority-matrix {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+}
+
+.priority-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85em;
+  color: var(--sidebar-header);
+  background: var(--sidebar-item-bg);
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.priority-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.priority-icon {
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.priority-text {
+  flex: 1;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+/* Priority specific styles */
+.urgent-important {
+  background: rgba(255, 107, 107, 0.05);
+}
+
+.urgent-important::before {
+  background: #FF6B6B;
+}
+
+.urgent-important .priority-icon {
+  background: rgba(255, 107, 107, 0.15);
+  color: #FF6B6B;
+}
+
+.not-urgent-important {
+  background: rgba(108, 92, 231, 0.05);
+}
+
+.not-urgent-important::before {
+  background: #6C5CE7;
+}
+
+.not-urgent-important .priority-icon {
+  background: rgba(108, 92, 231, 0.15);
+  color: #6C5CE7;
+}
+
+.urgent-not-important {
+  background: rgba(255, 193, 7, 0.05);
+}
+
+.urgent-not-important::before {
+  background: #FFC107;
+}
+
+.urgent-not-important .priority-icon {
+  background: rgba(255, 193, 7, 0.15);
+  color: #FFC107;
+}
+
+.not-urgent-not-important {
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.not-urgent-not-important::before {
+  background: #4CAF50;
+}
+
+.not-urgent-not-important .priority-icon {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4CAF50;
+}
+
+.priority-item:hover {
+  transform: translateX(3px);
+}
+
+.priority-item:hover::before {
+  width: 6px;
+}
+
+.priority-item.active {
+  background: rgba(108, 92, 231, 0.1);
+  color: #6C5CE7;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.1);
+}
+
+/* Section 3: Quick Filters */
+.sidebar-section {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  background: var(--sidebar-section-bg);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar-section h3 {
+  margin: 0 0 0.7rem 0;
+  font-size: 0.75em;
+  color: var(--sidebar-header);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-weight: 600;
+}
+
+.sidebar-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sidebar-filter {
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85em;
+  color: var(--quick-filter-text);
+  background: var(--quick-filter-bg);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.sidebar-filter:hover {
+  background: var(--quick-filter-hover-bg);
+  transform: translateX(3px);
+}
+
+.sidebar-filter.active {
+  background: #FF6B6B;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.2);
+}
+
+/* Section 4 & 5: Lists and Tags */
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85em;
+  color: var(--list-text);
+  background: var(--list-bg);
+}
+
+.sidebar-item:hover {
+  background: var(--list-hover-bg);
+  transform: translateX(3px);
+}
+
+.sidebar-item.active {
+  background: rgba(108, 92, 231, 0.1);
+  color: #6C5CE7;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.1);
+}
+
+.list-color,
+.tag-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-name,
+.tag-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.sidebar-item.active .list-name,
+.sidebar-item.active .tag-name {
+  font-weight: 600;
+}
+
+/* Bottom Navigation */
+.sidebar-bottom-nav {
+  margin-top: auto;
+  padding: 1.2rem;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 0.8rem;
+  background: var(--sidebar-item-bg);
+}
+
+.sidebar-nav-btn {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #6c757d;
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.sidebar-nav-btn:hover {
+  background: #f1f3f5;
+  color: #FF6B6B;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 107, 107, 0.1);
+}
+
+.night-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sidebar input {
+  background: #5a8bd6;
+  border: 1px solid #4f73b8;
+}
+
+.sidebar input::placeholder {
+  color: #eaf3fb;
+}
+
+.sidebar button {
+  background: #5a8bd6;
+  border: none;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.sidebar button:hover {
+  background: #7baaf7;
+}
+
+.sidebar.night-mode button {
+  background: #4f7cf7;
+  color: #fff;
+}
+
+.sidebar.night-mode button:hover {
+  background: #232b47;
+}
+
+.sidebar-section,
+.sidebar-section h3 {
+  color: var(--sidebar-header);
+}
+
+/* But if these are inside a .sidebar-section with a dark background, force white */
+.sidebar-section .priority-item,
+.sidebar-section .sidebar-filter,
+.sidebar-section .sidebar-item {
+  color: var(--sidebar-header);
+}
+
+.sidebar-filter {
+  color: var(--quick-filter-text);
+}
+
+.sidebar-section .sidebar-filter {
+  color: var(--quick-filter-text);
+}
+
+.sidebar-section.quick-filters {
+  background: var(--quick-filter-bg);
+}
+
+.sidebar-section.quick-filters .sidebar-filter {
+  background: var(--quick-filter-bg);
+  color: var(--quick-filter-text);
+  font-weight: 600;
+}
+
+.sidebar-section.quick-filters .sidebar-filter:hover,
+.sidebar-section.quick-filters .sidebar-filter.active {
+  background: var(--quick-filter-hover-bg);
+  color: var(--quick-filter-hover-text);
+}
+
+.sidebar-list .sidebar-item,
+.sidebar-section.tags .sidebar-item {
+  background: var(--list-bg);
+  color: var(--list-text);
+}
+
+.sidebar-list .sidebar-item:hover,
+.sidebar-list .sidebar-item.active,
+.sidebar-section.tags .sidebar-item:hover,
+.sidebar-section.tags .sidebar-item.active {
+  background: var(--list-hover-bg);
+  color: var(--list-hover-text);
+}

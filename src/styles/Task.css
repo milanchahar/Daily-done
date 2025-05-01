@@ -1,0 +1,77 @@
+.task {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.task:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.task-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #dee2e6;
+  border-radius: 4px;
+  margin-right: 12px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.task-checkbox:checked {
+  background-color: #4ECDC4;
+  border-color: #4ECDC4;
+}
+
+.task-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.task-checkbox:hover {
+  border-color: #4ECDC4;
+}
+
+.task-content {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+}
+
+.task-content.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.delete-task-button {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.task:hover .delete-task-button {
+  opacity: 1;
+}
+
+.delete-task-button:hover {
+  color: #ff4444;
+} 
