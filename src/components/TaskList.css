@@ -370,3 +370,19 @@
 .night-mode .delete-task-button:hover {
   color: #ff4444;
 }
+
+.night-mode .task-input {
+  background: #232b47 !important;
+  color: #fff !important;
+  border: 1px solid #2d3657 !important;
+}
+
+.night-mode .task-input:focus {
+  background: #232b47 !important;
+  color: #fff !important;
+  border: 1px solid #4f7cf7 !important;
+}
+
+.night-mode .task-input::placeholder {
+  color: #aaa !important;
+}
